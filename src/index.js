@@ -1,6 +1,10 @@
 const express=require("express");
 const cors=require("cors");
 
+require("dotenv").config()
+
+const port=process.env.PORT || 7005
+
 const  connect  = require("./configs/db");
 const app=express();
 
@@ -31,10 +35,10 @@ app.use("/body",bodycont)
 
 
 
-app.listen(7005,async ()=>{
+app.listen(port,async ()=>{
     try{
         await connect();
-        console.log("listing on port 7005")
+        console.log(`listing on port${port}`)
     }catch(err){
         console.log(err.message);
     }
